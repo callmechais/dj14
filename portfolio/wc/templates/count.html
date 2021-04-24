@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1> Word Count: {{ len }} words in your text</h1>
+<a href="{% url 'home' %}">restart count</a>
+<br/>
+<a href="{% url 'help' %}">help</a>
+<form action="{% url 'count' %}">
+    <textarea cols="100" rows="10" name="fulltext">{{ words }}</textarea>
+    <p></p>
+    <input type="submit" value="count!" />
+</form>
+
+<hr/>
+{% for word,count in worddict %}
+    {{ word }} - {{ count }}
+    <br />
+{% endfor %}
+
+{% endblock %}
